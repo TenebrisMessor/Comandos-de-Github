@@ -24,10 +24,12 @@ Este comando permite iniciar un repositorio dentro de una carpeta.
 git init
 ```
 Clonamos el repositorio de github o bitbucket 
-```ssh git clone <url> 
+```ssh 
+git clone <url> 
 ```
 Añadimos todos los archivos para el commit 
-```ssh git add . 
+```ssh 
+git add . 
 ```
 Hacemos el primer commit 
 ```ssh 
@@ -114,8 +116,9 @@ git push --tags
 
 Muestra los logs de los commits 
 ```ssh 
+git log
 ```
-git log Muestras los cambios en los commits 
+Muestras los cambios en los commits 
 ```ssh 
 git log --oneline --stat
 ```
@@ -242,7 +245,8 @@ Omite el conflicto y sigue su camino
 git rebase --skip 
 ```
 Devuelve todo al principio del rebase 
-```ssh git reabse --abort
+```ssh 
+git reabse --abort
 ```
 Para hacer un rebase a un branch en especifico 
 ```ssh 
