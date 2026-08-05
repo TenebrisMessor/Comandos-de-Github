@@ -180,3 +180,5 @@ Reescribe todos los commits del repo — por ejemplo, para dejar de exponer tu e
 git show para mostrar la diferencia entre los ultimos 2 
 git diff para mostrar la diferencia entre dos commits especificos. 
 Stash
+
+actualizamos también para el merge
