@@ -175,4 +175,3 @@ Reescribe todos los commits del repo — por ejemplo, para dejar de exponer tu e
 | `git remote add upstream <url>` | Agrega el repo original como remoto (para poder traer sus cambios) |
 | `git fetch upstream` | Trae los cambios del repo original |
 | `git merge upstream/master` | Fusiona esos cambios en tu fork |
-Agregando a la linea 178.
