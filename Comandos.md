@@ -1,303 +1,177 @@
-### Comandos-de-Github
-Todos los comandos que voy aprendiendo de Github
+# Comandos de GitHub
 
-##Configuración Básica
+Todos los comandos que voy aprendiendo de Git/GitHub.
 
-Configurar Nombre que salen en los commits 
-```ssh 
-git config --global user.name "Messorem" 
-```
-Configurar Email 
-```ssh 
-git config --global user.email messor02@gmail.com 
-```
-Marco de colores para los comando 
-```ssh 
-git config --global color.ui true
-```
+## Configuración básica
 
+| Comando | Descripción |
+|---|---|
+| `git config --global user.name "Messorem"` | Configura el nombre que aparece en tus commits |
+| `git config --global user.email messor02@gmail.com` | Configura el email que aparece en tus commits |
+| `git config --global user.email "TU_ID+tuusuario@users.noreply.github.com"` | Usa el email "noreply" de GitHub en vez del real, para no exponerlo públicamente (evita el error GH007 al pushear) |
+| `git config --global color.ui true` | Activa colores en la salida de los comandos |
 
-##Iniciando repositorio
+## Iniciando un repositorio
 
-Este comando permite iniciar un repositorio dentro de una carpeta.
-```ssh 
-git init
-```
-Clonamos el repositorio de github o bitbucket 
-```ssh 
-git clone <url> 
-```
-Añadimos todos los archivos para el commit 
-```ssh 
-git add . 
-```
-Hacemos el primer commit 
-```ssh 
-git commit -m "Texto que identifique por que se hizo el commit" 
-```
-subimos al repositorio 
-```ssh 
-git push origin master
-```
+| Comando | Descripción |
+|---|---|
+| `git init` | Inicia un repositorio nuevo dentro de la carpeta actual |
+| `git clone <url>` | Clona un repositorio de GitHub o Bitbucket |
+| `git add .` | Añade todos los archivos al staging para el commit |
+| `git commit -m "mensaje"` | Hace un commit con los cambios en staging |
+| `git push origin master` | Sube los commits al repositorio remoto |
 
+## git clone
 
-##GIT CLONE
-Clonamos el repositorio de github o bitbucket 
-```ssh 
-git clone <url> 
-```
-Clonamos el repositorio de github o bitbucket ????? 
-```ssh 
-git clone <url> git-demo
-```
+| Comando | Descripción |
+|---|---|
+| `git clone <url>` | Clona el repositorio en una carpeta con el mismo nombre que el repo |
+| `git clone <url> nombre-carpeta` | Clona el repositorio dentro de una carpeta con el nombre que tú elijas |
 
+## git add
 
-##GIT ADD
-Añadimos todos los archivos para el commit 
-```ssh 
-git add . 
-```
-Añadimos el archivo para el commit 
-```ssh 
-git add <archivo> 
-```
-Añadimos todos los archivos para el commit omitiendo los nuevos 
-```ssh 
-git add --all 
-```
-Añadimos todos los archivos con la extensión especificada 
-```ssh 
-git add *.txt 
-```
-Añadimos todos los archivos dentro de un directorio y de una extensión especifica 
-```ssh 
-git add docs/*.txt
-```
-Añadimos todos los archivos dentro de un directorios 
-```ssh 
-git add docs/
-```
+| Comando | Descripción |
+|---|---|
+| `git add .` | Añade todos los archivos (nuevos y modificados) al staging |
+| `git add <archivo>` | Añade un archivo específico al staging |
+| `git add --all` | Añade todos los archivos, incluyendo los que ya se rastreaban antes |
+| `git add *.txt` | Añade todos los archivos con la extensión indicada |
+| `git add docs/*.txt` | Añade los archivos de una extensión específica dentro de una carpeta |
+| `git add docs/` | Añade todos los archivos dentro de una carpeta |
 
+## git commit
 
+| Comando | Descripción |
+|---|---|
+| `git commit -m "mensaje"` | Sube al HEAD los cambios que están en staging |
+| `git commit -a -m "mensaje"` | Agrega (los archivos ya rastreados) y comitea en un solo paso |
+| `git commit -a` | Igual que arriba, pero te muestra el editor si hay conflictos/detalles que revisar |
+| `git commit --amend -m "mensaje"` | Modifica el último commit (no aparece como uno nuevo en el log); opcionalmente le cambias el mensaje |
 
-##GIT COMMIT
+## git push
 
-Cargar en el HEAD los cambios realizados 
-```ssh
-git commit -m "Texto que identifique por que se hizo el commit"
-```
-Agregar y Cargar en el HEAD los cambios realizados 
-```ssh 
-git commit -a -m "Texto que identifique por que se hizo el commit" 
-```
-De haber conflictos los muestra 
-```ssh 
-git commit -a 
-```
-Agregar al ultimo commit, este no se muestra como un nuevo commit en los logs. Se puede especificar un nuevo mensaje 
-ssh git commit --amend -m "Texto que identifique por que se hizo el commit"
+| Comando | Descripción |
+|---|---|
+| `git push <origen> <branch>` | Sube los commits de esa rama al remoto indicado |
+| `git push --tags` | Sube los tags al remoto |
+| `git push --force-with-lease` | Fuerza el push de forma segura (usar después de reescribir historial, ej. con filter-branch) |
+| `git push --force` | Fuerza el push sin chequeo de seguridad — evítalo si puedes, mejor usa `--force-with-lease` |
 
+## git log
 
+| Comando | Descripción |
+|---|---|
+| `git log` | Muestra el historial de commits |
+| `git log --oneline --stat` | Muestra los commits resumidos junto con los archivos que cambiaron |
+| `git log --oneline --graph` | Muestra el historial como gráfico de ramas |
 
-##GIT PUSH
+## git diff
 
-Subimos al repositorio 
-```ssh
-git push <origien> <branch> 
-```
-Subimos un tag 
-```ssh
-git push --tags
-```
+| Comando | Descripción |
+|---|---|
+| `git diff` | Muestra los cambios que aún no están en staging |
+| `git diff --staged` | Muestra los cambios que ya están en staging |
 
+## git reset
 
+| Comando | Descripción |
+|---|---|
+| `git reset HEAD <archivo>` | Saca un archivo del staging (sin perder los cambios) |
+| `git reset --soft HEAD^` | Deshace el último commit y deja los cambios en staging |
+| `git reset --hard HEAD^` | Deshace el último commit y borra los cambios por completo |
+| `git reset --hard HEAD^^` | Deshace los últimos 2 commits y borra los cambios |
+| `git reset --hard <commit_sha>` | Rollback a un commit específico (usa `git log` primero para conseguir el sha) |
 
-##GIT LOG
+## git remote
 
-Muestra los logs de los commits 
-```ssh 
-git log
-```
-Muestras los cambios en los commits 
-```ssh 
-git log --oneline --stat
-```
-Muestra graficos de los commits 
-```ssh
-git log --oneline --graph
-```
+| Comando | Descripción |
+|---|---|
+| `git remote add origin <url>` | Agrega un repositorio remoto |
+| `git remote set-url origin <url>` | Cambia la URL del remoto (útil si renombraste el repo en GitHub) |
+| `git remote rm <nombre>` | Elimina un remoto |
+| `git remote -v` | Lista los remotos configurados |
+| `git remote show origin` | Muestra info y branches del remoto |
+| `git remote prune origin` | Limpia referencias a branches remotos que ya no existen |
 
+## git branch
 
+| Comando | Descripción |
+|---|---|
+| `git branch` | Lista los branches locales |
+| `git branch <nombre>` | Crea un branch nuevo |
+| `git branch -d <nombre>` | Elimina el branch (ya fusionado a master) |
+| `git branch -D <nombre>` | Elimina el branch sin preguntar, aunque no esté fusionado |
 
-##GIT DIFF
+## git tag
 
-Muestra los cambios realizados a un archivo 
-```ssh 
-git diff git diff --staged
-```
+| Comando | Descripción |
+|---|---|
+| `git tag` | Muestra la lista de todos los tags |
+| `git tag -a <version> -m "mensaje"` | Crea un tag nuevo con mensaje |
 
+## git rebase
 
+Los rebase se usan cuando trabajas con branches; ponen tu branch al día con master sin que se vea como un merge.
 
-##GIT HEAD
+| Comando | Descripción |
+|---|---|
+| `git rebase <nombre-branch>` | Hace rebase de tu branch actual sobre el branch indicado |
+| `git rebase --continue` | Continúa el rebase después de resolver un conflicto |
+| `git rebase --skip` | Omite el commit conflictivo y sigue |
+| `git rebase --abort` | Cancela el rebase y vuelve todo al estado inicial |
 
-Saca un archivo del commit 
-```ssh 
-git reset HEAD <archivo> 
-```
-Devuelve el ultimo commit que se hizo y pone los cambios en staging 
-```ssh 
-git reset --soft HEAD^
-```
-Devuelve el ultimo commit y todos los cambios 
-```ssh
-git reset --hard HEAD^ 
-```
-Devuelve los 2 ultimo commit y todos los cambios 
-```ssh 
-git reset --hard HEAD^^
-```
-Rollback merge/commit 
-```ssh
-git log git reset --hard <commit_sha>
-```
+## git stash
 
+Guarda tus cambios sin comitear en un espacio aparte y deja el árbol de trabajo limpio — útil cuando necesitas cambiar de rama o correr algo que exige el working tree limpio, pero no quieres comitear todavía.
 
+| Comando | Descripción |
+|---|---|
+| `git stash` | Guarda los cambios sin comitear |
+| `git stash list` | Lista lo que tienes guardado |
+| `git stash pop` | Recupera lo último guardado |
 
-##GIT REMOTE
+## git subtree
 
-Agregar repositorio remoto 
-```ssh
-git remote add origin <url> 
-```
-Cambiar de remote 
-```ssh
-git remote set-url origin <url> 
-```
-Remover repositorio 
-```ssh
-git remote rm <name/origin> 
-```
-Muestra lista repositorios 
-```ssh
-git remote -v
-```
-Muestra los branches remotos
-```ssh 
-git remote show origin
-```
-Limpiar todos los branches eliminados 
-```ssh
-git remote prune origin
-```
+Trae un repo completo como subcarpeta dentro de otro repo, conservando todo su historial de commits — útil para consolidar varios repos chicos en uno solo (ej. proyectos de un mismo curso).
 
+| Comando | Descripción |
+|---|---|
+| `git subtree add --prefix=carpeta-destino <url-repo-viejo> main` | Trae el repo viejo como subcarpeta, con su historial completo |
+| `git subtree add --prefix=carpeta-destino <url-repo-viejo> main --squash` | Igual, pero comprime el historial del repo viejo en un solo commit |
 
+## git filter-branch (reescribir historial)
 
-##GIT BRANCH
+Reescribe todos los commits del repo — por ejemplo, para dejar de exponer tu email real en el historial. Solo hazlo en repos que aún no compartiste, o que vas a forzar el push después.
 
-Crea un branch 
-```ssh
-git branch <nameBranch>
-```
-Lista los branches
-```ssh
-git branch Comando -d 
-```
-elimina el branch y lo une al master 
-```ssh
-git branch -d <nameBranch>
-```
-Elimina sin preguntar 
-```ssh
-git branch -D <nameBranch>
-```
+| Comando | Descripción |
+|---|---|
+| `git filter-branch --env-filter '`<br>`export GIT_AUTHOR_EMAIL="tu-email-nuevo@ejemplo.com"`<br>`export GIT_COMMITTER_EMAIL="tu-email-nuevo@ejemplo.com"`<br>`' --tag-name-filter cat -- --branches --tags` | Reescribe el autor/committer de TODOS los commits con el email nuevo |
 
+> Git sugiere usar `git-filter-repo` (más moderno) en vez de esto, pero `filter-branch` ya viene con git y no requiere instalar nada extra.
 
+## GitHub CLI (`gh`)
 
-##GIT TAG
+| Comando | Descripción |
+|---|---|
+| `gh repo rename nuevo-nombre` | Renombra el repo en GitHub (si lo corres desde la carpeta local) |
 
-Muestra una lista de todos los tags 
-```ssh 
-git tag 
-```
-Crea un nuevo tags 
-```ssh
-git tag -a <verison> - m "esta es la versión x"
-```
+## Otros comandos
 
+| Comando | Descripción |
+|---|---|
+| `git status` | Muestra archivos modificados/agregados y el estado del repo |
+| `git checkout -- <archivo>` | Descarta cambios de un archivo y lo deja como estaba en el último commit |
+| `git checkout -b nombre-local origin/nombre-branch` | Crea un branch local a partir de uno remoto |
+| `git pull origin <branch>` | Trae y fusiona los cambios nuevos del remoto |
+| `git checkout <branch/tag>` | Cambia de branch (o de tag) |
+| `git merge <branch>` | Fusiona el branch indicado con el actual |
+| `git fetch` | Revisa cambios nuevos en el remoto sin fusionarlos todavía |
+| `git rm <archivo>` | Borra un archivo del repositorio |
 
+## Fork
 
-##GIT REBASE
-
-Los rebase se usan cuando trabajamos con branches esto hace que los branches se pongan al día con el master sin afectar al mismo
-
-Une el branch actual con el mastar, esto no se puede ver como un merge 
-```ssh
-git rebase 
-```
-Cuando se produce un conflicto no das las siguientes opciones:
-
-cuando resolvemos los conflictos --continue continua la secuencia del rebase donde se pauso 
-```ssh
-git rebase --continue 
-```
-Omite el conflicto y sigue su camino 
-```ssh
-git rebase --skip 
-```
-Devuelve todo al principio del rebase 
-```ssh 
-git reabse --abort
-```
-Para hacer un rebase a un branch en especifico 
-```ssh 
-git rebase <nameBranch>
-```
-
-
-
-##OTROS COMANDOS
-
-Lista un estado actual del repositorio con lista de archivos modificados o agregados 
-```ssh
-git status
-```
-Quita del HEAD un archivo y le pone el estado de no trabajado 
-```ssh
-git checkout -- <file>
-```
-Crea un branch en base a uno online 
-```ssh
-git checkout -b newlocalbranchname origin/branch-name
-```
-Busca los cambios nuevos y actualiza el repositorio 
-```ssh
-git pull origin <nameBranch>
-```
-Cambiar de branch 
-```ssh
-git checkout <nameBranch/tagname>
-```
-Une el branch actual con el especificado 
-```ssh
-git merge <nameBranch> 
-```
-Verifica cambios en el repositorio online con el local 
-```ssh
-git fetch 
-```
-Borrar un archivo del repositorio 
-```ssh
-git rm <archivo>
-```
-
-##Fork
-
-Descargar remote de un fork 
-```
-git remote add upstream <url>
-```
-Merge con master de un fork 
-```
-git fetch upstream
-git merge upstream/master
-```
+| Comando | Descripción |
+|---|---|
+| `git remote add upstream <url>` | Agrega el repo original como remoto (para poder traer sus cambios) |
+| `git fetch upstream` | Trae los cambios del repo original |
+| `git merge upstream/master` | Fusiona esos cambios en tu fork |
