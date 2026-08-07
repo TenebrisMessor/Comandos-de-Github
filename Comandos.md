@@ -1,5 +1,4 @@
-# Comandos de GitHub
-
+Comandos de GitHub
 Todos los comandos que voy aprendiendo de Git/GitHub.
 
 ## Configuración básica
@@ -172,6 +171,6 @@ Reescribe todos los commits del repo — por ejemplo, para dejar de exponer tu e
 
 | Comando | Descripción |
 |---|---|
-| `git remote add upstream <url>` | Agrega el repo original como remoto (para poder traer sus cambio) |
+| `git remote add upstream <url>` | Agrega el repo original como remoto (para poder traer sus cambios) |
 | `git fetch upstream` | Trae los cambios del repo original |
-| `git merge upstream/master` | Fusiona esos cambios en tu forksss |
+| `git merge upstream/master` | Fusiona esos cambios en tu forks |
