@@ -107,6 +107,9 @@ Todos los comandos que voy aprendiendo de Git/GitHub.
 |---|---|
 | `git tag` | Muestra la lista de todos los tags |
 | `git tag -a <version> -m "mensaje"` | Crea un tag nuevo con mensaje |
+| `git push origin --tags` | Empuja el tag a git |
+| `git tag -d <version>` |Elimina el tag en el repo local| 
+| `git push origin :refs/tags/<version>` | elimina el tag del repo online| 
 
 ## git rebase
 
