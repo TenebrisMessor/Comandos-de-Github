@@ -221,10 +221,14 @@ cuando alguien hace un cambio desde otra computadora debes hacer pull si vas a c
 ### Como trabajar en remoto (ejemplo real)
 No se recomienda agregar imagenes por el peso que esto podría agregar al repo. 
 ### Flujo de trabajo con varias personas en GitHub
+para revisar los cambios de otra persona el flujo sería hacer un pull de la rama sobre la que el está trabajando y ver en un git show los cambios hechos. Posteriormente podemos hacer un git merge desde la rama principal. 
 
 ## ¿Qué son y como hacer Pull Request?
+Se recomienda tener un dominio de staging o testeo mayormente para evitar enviar erroeres a producción. El pull request funciona para que el pull antes de ser implementado pueda ser revisado y aprobado.  
 ### Como funcionan los pull request y para que sirven
+Sirven para los que se dedican a DevOps revisen el cambio antes de que se lleve a producción el cambio. 
 ### Uso de pull request y merge request 1 y 2
+
 
 ## Como colaborar en proyectos Opensource
 ### Colaborando en un Proyecto OpenSource 1 y 2
