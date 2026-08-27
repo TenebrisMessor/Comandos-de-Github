@@ -80,45 +80,161 @@ git reset --soft <hash_del_commit>: Este comando mueve el puntero de la rama al 
 git reset --hard <hash_del_commit>: Esto mueve el puntero también, pero borra permanentemente todos los cambios en el área de trabajo y staging, dejándolo exactamente como estaba en el commit especificado. Se debe usar con precaución, ya que no hay forma de recuperar los cambios que se descartan con este comando.
 
 ## Repositorios remotos en un proyecto real
+En este módulo, se abordan los aspectos clave de trabajar con repositorios remotos en Git, cómo comenzar un proyecto, crear ramas, realizar merges y solucionar conflictos cuando estas operaciones producen problemas.
 ### Empezando con el proyecto
+Para iniciar un proyecto con un repositorio remoto:
+Se crea un repositorio vacío en GitHub.
+Conectas tu proyecto local al remoto usando:
+git remote add origin https://github.com/tu-usuario/mi-primer-proyecto.git: Añade una referencia a tu repositorio remoto.
+Para subir los archivos del repositorio local al remoto (si está vacío), utilizas:
+git push -u origin main: Esto sube tus commits de la rama main y configura la rama para futuros push y pull.
 ### Repositorios remotos comienzo
+Para verificar que el remoto fue añadido correctamente:
+git remote: Lista todos los remotos configurados.
+git remote -v: Muestra las URLs de los remotos y confirma la conexión correcta.
 ### Creando nuestras primeras Ramas
+Para crear una nueva rama, se usa:
+git branch <nombre_de_la_rama>: Esto crea una nueva rama, y para cambiar a esa rama, se utiliza:
+git checkout <nombre_de_la_rama>.
 ### Moverse entre ramas y ver los cambios
+Para visualizar las ramas disponibles, utilizas:
+git branch: Muestra todas las ramas en el repositorio. Para confirmar cambios antes de realizar un merge, es recomendable usar git status.
 ### hacer merge entre ramas
+Al realizar un merge de una rama a otra, se usa:
+git merge <nombre_de_la_rama>: Combina los cambios de la rama especificada en la rama activa.
 ### Especificaciones para hacer Merge
+Es importante asegurarte de que no haya cambios sin confirmar en tu rama antes de hacer un merge, ya que esto puede causar conflictos.
 ### Solución de conflctos al hacer merge
+Si se generan conflictos durante un merge, Git lo indicará. Deberás editar los archivos en conflicto para resolver las discrepancias y después:
+Usa git add <archivo> para marcar el conflicto como resuelto.
+Finaliza el merge con git commit.
+Este módulo te proporciona las herramientas esenciales para gestionar proyectos de manera efectiva en Git, permitiendo la colaboración y control sobre el código.
 
 ## Comenzando con GitHub
+En este módulo, aprenderás a trabajar con GitHub, creando repositorios remotos, solucionando errores comunes y haciendo push de tus cambios.
 ### Primeros pasos en GitHub
+Para comenzar, asegúrate de tener una cuenta en GitHub. Desde ahí, podrás explorar la plataforma y familiarizarte con su interfaz de usuario.
 ### Crear un repositorio remoto
+Para crear un nuevo repositorio remoto en GitHub:
+Ve a tu perfil de GitHub y haz clic en el botón "New" o "Nuevo".
+Completa los campos requeridos como nombre del repositorio y descripción.
+Finalmente, haz clic en "Create Repository".
 ### Solucionando los Errores
+Al trabajar con GitHub, es posible que enfrentes errores comunes. Uno frecuente al hacer push es el mensaje:
+Code
+error: failed to push some refs to 'https://github.com/...' 
+Este error se produce porque tu repositorio local está desactualizado respecto al remoto.
 ### Creación de repositorio remoto y solución de posibles errores
+Si al intentar hacer un push recibes el error mencionado:
+Actualiza tu repositorio local con el comando:
+git pull origin main (o master, según sea el nombre de tu rama).
+Resuelve cualquier conflicto si se presenta.
+Después de realizar el pull, intenta nuevamente hacer push con:
+git push origin main.
 ### Haciendo push en github y solución de errores
+Al hacer push, asegúrate de que tu rama local está al día con la remota. Si aún encuentras errores, revisa la autenticación. Desde agosto de 2021, GitHub ha eliminado la autenticación por contraseña; necesitarás usar un token de acceso personal o SSH para autenticarte. Consulta la documentación de GitHub para más detalles.
+Con estos pasos, estarás mejor equipado para manejar repositorios en GitHub y resolver problemas comunes que puedan surgir durante el desarrollo.
 
 ## Flujo de trabajo real
+En este módulo, aprenderás cómo gestionar el flujo de trabajo real utilizando GitHub, trayendo cambios de GitHub al repositorio local y cómo eliminar un repositorio local si fue creado por error.
 ### Haciendo cambios en GitHub y trayendolos al repositorio local
+Para realizar cambios en GitHub y luego traerlos a tu repositorio local, sigue estos pasos:
+Haz cambios en tu repositorio en GitHub desde la interfaz web.
+Para traer esos cambios al repositorio local, usa el siguiente comando desde tu terminal en el directorio de tu proyecto:
+git pull origin main (o master, dependiendo de tu configuración). Esto descargará y combinará los cambios remotos en tu rama local.
+Es importante recordar que siempre debes hacer un pull antes de un push para evitar conflictos entre las versiones.
 ### Como eliminar un repositorio local (Si se creó por error)
+Si has creado un repositorio local por error y deseas eliminarlo, simplemente puedes eliminar la carpeta que contiene el repositorio. Aquí están los pasos:
+Asegúrate de que no tienes cambios importantes que necesites guardar.
+Desde la terminal o explorador de archivos, navega a la ubicación donde se encuentra el repositorio local.
+Usa el siguiente comando para eliminar el repositorio:
+En Windows:
+rmdir /s /q nombre_del_repositorio
+En macOS/Linux:
+rm -rf nombre_del_repositorio
+Esto eliminará completamente el repositorio local y toda su información. Asegúrate de sustituir nombre_del_repositorio con el nombre real de tu carpeta del repositorio.
+Con estos pasos, podrás gestionar eficazmente tus repositorios en GitHub y manejar los errores que puedan surgir durante el flujo de trabajo.
 
 ## mejorando la seguridad de nuestros repositorios
+En este módulo, aprenderás a mejorar la seguridad de tus repositorios en Git utilizando llaves SSH, cómo conectarte a GitHub mediante SSH, realizar commits y resolver problemas comunes.
 ### Uso de llaves publicas y privadas
+Las llaves públicas y privadas se utilizan para establecer conexiones seguras entre tu máquina local y GitHub. La llave pública se puede compartir y es la que GitHub almacenará, mientras que la llave privada debe mantenerse en secreto.
 ### Conexión a GitHub por SSH
+Para conectarte utilizando SSH, necesitas generar un par de llaves SSH. Esto se realiza mediante el comando:
+ssh-keygen -t rsa -b 4096 -C "tu_email@example.com": Este comando genera una nueva llave SSH. Sigue las instrucciones para guardar la llave.
 ### Configurando SSH Partes 1 y 2
+Una vez que hayas generado tu llave, debes agregar la llave pública a tu cuenta de GitHub. Puedes hacer esto copiando el contenido de tu llave pública (generalmente se encuentra en ~/.ssh/id_rsa.pub) y pegándolo en GitHub bajo "Settings" > "SSH and GPG keys" > "New SSH key".
 ### Haciendo commits con SSH
+Una vez que tu llave SSH esté configurada correctamente, puedes realizar push y pull sin que se te pida tu contraseña, utilizando:
+git push origin main: Esto sube tus cambios al repositorio remoto mediante SSH, sin necesidad de ingresar credenciales cada vez.
 ### Solución del Problema
+Si encuentras problemas al usar SSH, verifica que tu llave pública está correctamente añadida a tu cuenta de GitHub y que el servicio SSH se está ejecutando en tu máquina. Puedes probar la conexión SSH con el comando:
+ssh -T git@github.com: Esto te ayudará a comprobar si la configuración fue exitosa.
 ### Configuración final de GitHub
+Finalmente, asegúrate de que Git esté configurado correctamente para identificarte. Usa los siguientes comandos:
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu_email@example.com"
+Con estos pasos, habrás mejorado la seguridad de tus repositorios y establecido una conexión confiable entre tu entorno local y GitHub.
 
 ## uso de Tags y Alias
+En este módulo, aprenderás sobre el uso de tags y alias en Git, así como la creación y eliminación de estos.Los tags son utilizados para marcar puntos específicos en la historia de un proyecto, como versiones liberadas. Los alias son comandos personalizados que simplifican tu flujo de trabajo en Git.
 ### Creación de Tags
+Los tags se utilizan para marcar versiones específicas de tu proyecto. Para crear un tag anotado, puedes usar el siguiente comando:
+git tag -a v1.0 -m "Primera versión": Esto crea un tag llamado v1.0 con un mensaje descriptivo.
 ### Como eliminar un Alias
+Si necesitas eliminar un alias que has creado, puedes hacerlo mediante el siguiente comando:
+git config --global --unset alias.nombre_del_alias: Sustituye nombre_del_alias con el alias que deseas eliminar.
 ### Uso de Tags
+Los tags son esenciales para documentar versiones importantes de tu proyecto. Puedes ver todos los tags existentes con el comando:
+git tag
+Además, para visualizar el mensaje asociado con un tag, usa:
+git show v1.0: Esto te mostrará información relevante sobre el tag, incluyendo el commit al que apunta y el mensaje que dejaste al crear el tag.
 ### Eliminar, Agregar y borrar tags
+Para eliminar un tag localmente, utiliza:
+git tag -d v1.0: Esto elimina el tag v1.0 de tu repositorio local.
+Si deseas eliminar el tag del repositorio remoto también, usa:
+git push --delete origin v1.0
+Para agregar un nuevo tag después de realizar cambios, utiliza el comando de tag que se mencionó anteriormente, seguido por un push para enviarlo al remoto:
+git push origin v1.0: Esto envía el tag al repositorio remoto.
+Con estos pasos, podrás gestionar eficazmente tags y alias en tus repositorios, facilitando la organización y el control de versiones en tus proyectos.
 
 ## Trabajando con multiples ramas en github
+En este módulo, aprenderás a trabajar con múltiples ramas en GitHub, incluyendo cómo hacer push de otras ramas y agregar ramas a tu repositorio.
 ### Hacer push de otras ramas de github
-### AGregando ramas a github
+Para enviar los cambios de una rama específica a GitHub, utiliza el siguiente comando:
+git push origin nombre_de_la_rama: Cambia nombre_de_la_rama por el nombre de la rama que deseas enviar. Esto subirá tus cambios de esa rama al repositorio remoto.
+### Agregando ramas a github
+Para agregar una nueva rama a tu repositorio en GitHub, primero crea la rama localmente y luego haz el push. Los comandos son:
+Crear una nueva rama:
+git branch nueva_rama: Esto crea una nueva rama llamada nueva_rama.
+Cambiar a la nueva rama:
+git checkout nueva_rama: Cambia a la nueva rama que acabas de crear.
+Hacer push de la nueva rama al remoto:
+git push -u origin nueva_rama: Este comando envía la nueva rama al repositorio remoto y establece un seguimiento entre tu rama local y la remota.
 
 ## Agregar Colaboradores a Github
+En este modulo se muestra como colaborar. 
 ### Agregando colaboradores en GitHub
+La persona que colabora sin problema puede hacer un clon del repositorio si este es publico. Puede hacer cambios, pero al hacer push desde su cuenta dice que esta denegado. Por ende se tiene que agregar el otro usuario en los settings del repositorio en manage access usando email o nombre de github una vez aceptada la invitación este puede comenzar a hacer cambios en el repo. 
 ### Colaborando en el proyecto (dos personas en distintas computadoras)
+cuando alguien hace un cambio desde otra computadora debes hacer pull si vas a comenzar a trabajar en el ya editado. 
 ### Como trabajar en remoto (ejemplo real)
+No se recomienda agregar imagenes por el peso que esto podría agregar al repo. 
 ### Flujo de trabajo con varias personas en GitHub
+
+## ¿Qué son y como hacer Pull Request?
+### Como funcionan los pull request y para que sirven
+### Uso de pull request y merge request 1 y 2
+
+## Como colaborar en proyectos Opensource
+### Colaborando en un Proyecto OpenSource 1 y 2
+### Continuación con el fork y actualizaciones
+### Participa en el proyecto
+
+## Importantes 
+### Uso de Gitignore
+### uso de README
+
+## Github en Varias Plataformas
+### GitHub Pages
+### GitHub Móvil
