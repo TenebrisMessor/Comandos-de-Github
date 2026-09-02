@@ -9,6 +9,6 @@ Base de conocimiento personal de programación y herramientas de desarrollo. Nac
 - [`cpp/`](cpp/) — notas de C++.
 - [`asm/`](asm/) — notas de ensamblador.
 - [`matlab/`](matlab/) — notas de MATLAB.
-- [`terminal-ssh-networking/`](terminal-ssh-networking/) — terminal, SSH y redes locales.
+- [`Terminal/`](Terminal/) — comandos para macOS, Linux y Windows, SSH y redes locales.
 
 Cada carpeta contiene notas propias, no documentación oficial reemplazada — son apuntes de cosas aprendidas en el día a día.
